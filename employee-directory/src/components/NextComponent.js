@@ -1,0 +1,156 @@
+import "bootstrap/dist/css/bootstrap.min.css";
+
+import React from "react";
+import BootstrapTable from "react-bootstrap-table-next";
+import TableHeaderColumn from "react-bootstrap-table-next";
+import API from "../utils/API";
+
+const data = [
+  {
+    id: 0,
+    name: "banana",
+    price: "0.25"
+  },
+  {
+    id: 1,
+    name: "spinach",
+    price: "4.49"
+  },
+  {
+    id: 2,
+    name: "icecream",
+    price: "4.99"
+  },
+  {
+    id: 3,
+    name: "bagel",
+    price: "1.19"
+  },
+  {
+    id: 4,
+    name: "fish",
+    price: "10.00"
+  }
+];
+
+// const columns = [
+//   {
+//     dataField: "id",
+//     hidden: true
+//   },
+//   {
+//     dataField: "name",
+//     text: "Grocery"
+//   },
+//   {
+//     dataField: "price",
+//     text: "Price"
+//   }
+// ];
+
+const columns = [
+  {
+    dataField: "email",
+    hidden: false
+  },
+  {
+    dataField: "firstname",
+    text: "firstname"
+  },
+  {
+    dataField: "lastname",
+    text: "lastname"
+  }
+];
+// function NextComponent() {
+//   return <BootstrapTable keyField="id" data={data} columns={columns} />;
+// }
+
+class NextComponent extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      items: []
+    };
+
+    // this.state = {
+    //   items: [],
+    //   totalSize: 0,
+    //   page: 1,
+    //   sizePerPage: 10
+    // };
+    this.fetchData = this.fetchData.bind(this);
+    // this.handlePageChange = this.handlePageChange.bind(this);
+    // this.handleSizePerPageChange = this.handleSizePerPageChange.bind(this);
+  }
+
+  componentDidMount() {
+    this.fetchData();
+  }
+
+  fetchData() {
+    // page = this.state.page, sizePerPage = this.state.sizePerPage
+    //   fakeDataFetcher.fetch(page, sizePerPage)
+    //     .then(data => {
+    //       this.setState({items: data.items, totalSize: data.total, page, sizePerPage});
+    //     });
+    // this.setState({ items: data, totalSize: 3, sizePerPage: 3 });
+    var self = this;
+
+    API.search().then(function(data) {
+      console.log(data.data.results);
+      var items = data.data.results;
+
+      console.log(items);
+
+      const people = items.map((current, index, arr) => {
+        return {
+          firstname: current.name.first,
+          lastname: current.name.last,
+          email: current.email
+        };
+      });
+
+      self.setState({ items: people });
+    });
+  }
+
+  handlePageChange(page, sizePerPage) {
+    // this.fetchData(page, sizePerPage);
+  }
+
+  handleSizePerPageChange(sizePerPage) {
+    // When changing the size per page always navigating to the first page
+    // this.fetchData(1, sizePerPage);
+  }
+
+  render() {
+    // const options = {
+    //   onPageChange: this.handlePageChange,
+    //   onSizePerPageList: this.handleSizePerPageChange,
+    //   page: this.state.page,
+    //   sizePerPage: this.state.sizePerPage
+    // };
+
+    return (
+      <BootstrapTable
+        keyField="email"
+        data={this.state.items}
+        columns={columns}
+      >
+        <TableHeaderColumn dataField="email" isKey dataAlign="center">
+          Id
+        </TableHeaderColumn>
+        <TableHeaderColumn dataField="firstname" dataAlign="center">
+          Name
+        </TableHeaderColumn>
+        <TableHeaderColumn dataField="lastname" dataAlign="center">
+          Surname
+        </TableHeaderColumn>
+      </BootstrapTable>
+    );
+  }
+}
+
+export default NextComponent;
