@@ -4,6 +4,8 @@ import React from "react";
 import BootstrapTable from "react-bootstrap-table-next";
 import TableHeaderColumn from "react-bootstrap-table-next";
 import API from "../utils/API";
+import "react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css";
+import filterFactory, { textFilter } from "react-bootstrap-table2-filter";
 
 const data = [
   {
@@ -51,15 +53,20 @@ const data = [
 const columns = [
   {
     dataField: "email",
-    hidden: false
+    text: "Email",
+    hidden: false,
+    sort: true
   },
   {
     dataField: "firstname",
-    text: "firstname"
+    text: "First",
+    sort: true,
+    filter: textFilter()
   },
   {
     dataField: "lastname",
-    text: "lastname"
+    text: "Last",
+    sort: true
   }
 ];
 // function NextComponent() {
@@ -81,6 +88,7 @@ class NextComponent extends React.Component {
     //   sizePerPage: 10
     // };
     this.fetchData = this.fetchData.bind(this);
+
     // this.handlePageChange = this.handlePageChange.bind(this);
     // this.handleSizePerPageChange = this.handleSizePerPageChange.bind(this);
   }
@@ -138,9 +146,10 @@ class NextComponent extends React.Component {
         keyField="email"
         data={this.state.items}
         columns={columns}
+        filter={filterFactory()}
       >
         <TableHeaderColumn dataField="email" isKey dataAlign="center">
-          Id
+          Email
         </TableHeaderColumn>
         <TableHeaderColumn dataField="firstname" dataAlign="center">
           Name
