@@ -2,6 +2,8 @@
 
 ### Live Site
 
+https://michelles-employee-directory.herokuapp.com/
+
 ### Description
 
 This is an employee directory built with React. Users are able to view the employee directory, click column headings to sort, and search for a specific user by entering their first name in the search field.
