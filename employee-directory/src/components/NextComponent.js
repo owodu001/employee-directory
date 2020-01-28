@@ -1,3 +1,7 @@
+//references: https://npm.runkit.com/react-bootstrap-table-next
+// example of how to use bootstrap table
+//gist.github.com/xabikos/fcd6e709f8ae0c11e33b
+
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import React from "react";
@@ -7,33 +11,33 @@ import API from "../utils/API";
 import "react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css";
 import filterFactory, { textFilter } from "react-bootstrap-table2-filter";
 
-const data = [
-  {
-    id: 0,
-    name: "banana",
-    price: "0.25"
-  },
-  {
-    id: 1,
-    name: "spinach",
-    price: "4.49"
-  },
-  {
-    id: 2,
-    name: "icecream",
-    price: "4.99"
-  },
-  {
-    id: 3,
-    name: "bagel",
-    price: "1.19"
-  },
-  {
-    id: 4,
-    name: "fish",
-    price: "10.00"
-  }
-];
+// const data = [
+//   {
+//     id: 0,
+//     name: "banana",
+//     price: "0.25"
+//   },
+//   {
+//     id: 1,
+//     name: "spinach",
+//     price: "4.49"
+//   },
+//   {
+//     id: 2,
+//     name: "icecream",
+//     price: "4.99"
+//   },
+//   {
+//     id: 3,
+//     name: "bagel",
+//     price: "1.19"
+//   },
+//   {
+//     id: 4,
+//     name: "fish",
+//     price: "10.00"
+//   }
+// ];
 
 // const columns = [
 //   {
@@ -104,11 +108,11 @@ class NextComponent extends React.Component {
     //       this.setState({items: data.items, totalSize: data.total, page, sizePerPage});
     //     });
     // this.setState({ items: data, totalSize: 3, sizePerPage: 3 });
-    var self = this;
+    const self = this;
 
     API.search().then(function(data) {
       console.log(data.data.results);
-      var items = data.data.results;
+      const items = data.data.results;
 
       console.log(items);
 

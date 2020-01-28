@@ -6,13 +6,15 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import SearchBar from "./components/SearchBar";
 import Results from "./components/Results";
 import NextComponent from "./components/NextComponent";
+import "./components/NextComponent.css";
 
 function App() {
   return (
     <div className="table">
       {/* <Table />
       <Results />
-      <SearchBar /> */}
+       */}
+      <SearchBar />
       <NextComponent />
     </div>
   );
