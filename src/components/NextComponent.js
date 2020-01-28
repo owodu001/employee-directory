@@ -1,4 +1,5 @@
 //references: https://npm.runkit.com/react-bootstrap-table-next
+//https://react-bootstrap-table.github.io/react-bootstrap-table2/docs/filter-props.html
 // example of how to use bootstrap table
 //gist.github.com/xabikos/fcd6e709f8ae0c11e33b
 
@@ -128,14 +129,14 @@ class NextComponent extends React.Component {
     });
   }
 
-  handlePageChange(page, sizePerPage) {
-    // this.fetchData(page, sizePerPage);
-  }
+  // handlePageChange(page, sizePerPage) {
+  //   // this.fetchData(page, sizePerPage);
+  // }
 
-  handleSizePerPageChange(sizePerPage) {
-    // When changing the size per page always navigating to the first page
-    // this.fetchData(1, sizePerPage);
-  }
+  // handleSizePerPageChange(sizePerPage) {
+  //   // When changing the size per page always navigating to the first page
+  //   // this.fetchData(1, sizePerPage);
+  // }
 
   render() {
     // const options = {
