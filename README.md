@@ -2,7 +2,7 @@
 
 ### Live Site
 
-https://michelles-employee-directory.herokuapp.com/
+michelles-employee-tracker.netlify.com
 
 ### Description
 
